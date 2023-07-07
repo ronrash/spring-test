@@ -43,6 +43,21 @@ public class PersonRequestTest {
         assertThat(violations).hasSize(1);
         assertThat(violations.iterator().next().getPropertyPath().toString()).isEqualTo("name");
     }
+    @Test
+    void shouldErrorForMissingidentityDetails() {
+        // Create a PersonRequest object with a missing name
+        final PersonRequest personRequest = PersonRequest.builder()
+                .age(25)
+                .name("Jack")
+                .build();
+
+        // Validate the PersonRequest object
+        Set<ConstraintViolation<PersonRequest>> violations = validate(personRequest);
+
+        // Assert that there is a constraint violation for the missing name
+        assertThat(violations).hasSize(1);
+        assertThat(violations.iterator().next().getPropertyPath().toString()).isEqualTo("identityDetail");
+    }
 
     @Test
     void shouldErrorForInvalidAge() {
