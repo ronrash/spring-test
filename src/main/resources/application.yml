@@ -1,0 +1,25 @@
+server:
+  port: 8092
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5439/test_container
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  application:
+    name: spring-test-container-service
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    properties:
+      hibernate:
+    org:
+      hibernate:
+        dialect:
+          PostgreSQLDialect:
+
+
